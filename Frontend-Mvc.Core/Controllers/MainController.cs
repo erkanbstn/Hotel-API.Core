@@ -2,12 +2,14 @@
 using Frontend_Mvc.Core.ViewModels.Message;
 using Frontend_Mvc.Core.ViewModels.Staff;
 using Frontend_Mvc.Core.ViewModels.Subscribe;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace Frontend_Mvc.Core.Controllers
 {
+    [AllowAnonymous]
     public class MainController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -71,6 +73,10 @@ namespace Frontend_Mvc.Core.Controllers
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("http://localhost:5298/api/Subscribe", content);
             return RedirectToAction("Index");
+        }
+        public IActionResult Error404()
+        {
+            return View();
         }
     }
 }

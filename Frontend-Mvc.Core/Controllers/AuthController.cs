@@ -1,10 +1,12 @@
 ﻿using ApiConsume.EntityLayer.Concrete;
 using Frontend_Mvc.Core.ViewModels.AppUser;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Frontend_Mvc.Core.Controllers
 {
+    [AllowAnonymous]
     public class AuthController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -53,7 +55,7 @@ namespace Frontend_Mvc.Core.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
-            return View();
+            return RedirectToAction("LogIn");
         }
     }
 }
