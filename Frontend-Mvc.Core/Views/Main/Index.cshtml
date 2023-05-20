@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<partial name="~/Views/Shared/UILayoutPartials/_About.cshtml" />
+
+@await Component.InvokeAsync("RoomPartial")
+<partial name="~/Views/Shared/UILayoutPartials/_Video.cshtml" />
+@await Component.InvokeAsync("ServicePartial")
+@await Component.InvokeAsync("TestimonialPartial")
+@await Component.InvokeAsync("StaffPartial")
