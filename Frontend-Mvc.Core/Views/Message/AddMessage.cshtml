@@ -1,0 +1,20 @@
+﻿@model MessageViewModel
+@{
+    ViewData["Title"] = "AddMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Mesaj Ekle</h1>
+<br />
+<form method="post">
+    <span>Kişi</span>
+    <input asp-for="Name" class="form-control" type="text" />
+    <br />
+    <span>Email</span>
+    <input asp-for="Email" class="form-control" type="text" />
+    <br />
+    <span>İçerik</span>
+    <input asp-for="Content" class="form-control" type="text" />
+    <br />
+    <input class="btn btn-primary" value="Değişiklikleri Kaydet" type="submit" />
+</form>

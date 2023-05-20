@@ -1,4 +1,5 @@
 ﻿using Frontend_Mvc.Core.ViewModels.Booking;
+using Frontend_Mvc.Core.ViewModels.Message;
 using Frontend_Mvc.Core.ViewModels.Staff;
 using Frontend_Mvc.Core.ViewModels.Subscribe;
 using Microsoft.AspNetCore.Mvc;
@@ -51,6 +52,15 @@ namespace Frontend_Mvc.Core.Controllers
         }
         public IActionResult Contact()
         {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Contact(MessageViewModel messageViewModel)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(messageViewModel);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("http://localhost:5298/api/Message", content);
             return View();
         }
         [HttpPost]

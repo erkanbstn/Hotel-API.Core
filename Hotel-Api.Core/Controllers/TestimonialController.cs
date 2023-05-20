@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Hotel_Api.Core.Controller
+namespace Hotel_Api.Core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

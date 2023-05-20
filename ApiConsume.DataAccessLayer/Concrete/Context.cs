@@ -22,5 +22,6 @@ namespace ApiConsume.DataAccessLayer.Concrete
         public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Booking> Bookings{ get; set; }
+        public DbSet<Message> Messages{ get; set; }
     }
 }

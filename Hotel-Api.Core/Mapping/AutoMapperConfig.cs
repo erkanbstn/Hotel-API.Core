@@ -1,4 +1,5 @@
 ﻿using ApiConsume.DtoLayer.Dtos.BookingDto;
+using ApiConsume.DtoLayer.Dtos.MessageDto;
 using ApiConsume.DtoLayer.Dtos.RoomDto;
 using ApiConsume.DtoLayer.Dtos.ServiceDto;
 using ApiConsume.DtoLayer.Dtos.StaffDto;
@@ -29,6 +30,9 @@ namespace Hotel_Api.Core.Mapping
 
             CreateMap<BookingAddDto, Booking>().ReverseMap();
             CreateMap<BookingUpdateDto, Booking>().ReverseMap();
+
+            CreateMap<MessageAddDto, Message>().ReverseMap();
+            CreateMap<MessageUpdateDto, Message>().ReverseMap();
         }
     }
 }

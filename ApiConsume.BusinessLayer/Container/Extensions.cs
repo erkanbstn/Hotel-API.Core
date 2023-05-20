@@ -34,6 +34,9 @@ namespace ApiConsume.BusinessLayer.Container
             services.AddScoped<IBookingDal, EFBookingDal>();
             services.AddScoped<IBookingService, BookingManager>();
 
+            services.AddScoped<IMessageDal, EFMessageDal>();
+            services.AddScoped<IMessageService, MessageManager>();
+
             services.AddDbContext<Context>();
         }
     }
