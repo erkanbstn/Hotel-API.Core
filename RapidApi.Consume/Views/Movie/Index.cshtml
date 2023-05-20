@@ -1,0 +1,31 @@
+﻿@model List<ImdbViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>IMDB Top 100 Movie</h1>
+<br />
+<table class="table table-hover">
+    <tr>
+        Rank
+    </tr>
+      <tr>
+        Title
+    </tr>
+      <tr>
+        Rating
+    </tr>
+      <tr>
+        Trailer
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.rank</td>
+            <td>@item.title</td>
+            <td>@item.rating</td>
+            <td>@item.trailer</td>
+        </tr>
+    }
+</table>
+
