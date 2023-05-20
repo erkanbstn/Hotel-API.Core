@@ -1,4 +1,4 @@
-﻿using Frontend_Mvc.Core.Models.Testimonial;
+﻿using Frontend_Mvc.Core.ViewModels.Testimonial;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;

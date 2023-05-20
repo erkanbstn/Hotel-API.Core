@@ -1,8 +1,8 @@
-﻿namespace Frontend_Mvc.Core.Models.Testimonial
+﻿namespace Frontend_Mvc.Core.ViewModels.Testimonial
 {
     public class TestimonialViewModel
     {
-        public int Id{ get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }

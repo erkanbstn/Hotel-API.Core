@@ -1,5 +1,7 @@
 ﻿using ApiConsume.BusinessLayer.Abstract;
+using ApiConsume.DtoLayer.Dtos.SubscribeDto;
 using ApiConsume.EntityLayer.Concrete;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +12,12 @@ namespace Hotel_Api.Core.Controller
     public class SubscribeController : ControllerBase
     {
         private readonly ISubscribeService _SubscribeService;
+        private readonly IMapper _mapper;
 
-        public SubscribeController(ISubscribeService SubscribeService)
+        public SubscribeController(ISubscribeService subscribeService, IMapper mapper)
         {
-            _SubscribeService = SubscribeService;
+            _SubscribeService = subscribeService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -23,9 +27,10 @@ namespace Hotel_Api.Core.Controller
             return Ok(values);
         }
         [HttpPost]
-        public IActionResult AddSubscribe(Subscribe Subscribe)
+        public IActionResult AddSubscribe(SubscribeAddDto subscribeAddDto)
         {
-            _SubscribeService.TInsert(Subscribe);
+            var values = _mapper.Map<Subscribe>(subscribeAddDto);
+            _SubscribeService.TInsert(values);
             return Ok();
         }
         [HttpDelete]
@@ -35,9 +40,10 @@ namespace Hotel_Api.Core.Controller
             return Ok();
         }
         [HttpPut]
-        public IActionResult UpdateSubscribe(Subscribe Subscribe)
+        public IActionResult UpdateSubscribe(SubscribeUpdateDto subscribeUpdateDto)
         {
-            _SubscribeService.TUpdate(Subscribe);
+            var values = _mapper.Map<Subscribe>(subscribeUpdateDto);
+            _SubscribeService.TUpdate(values);
             return Ok();
         }
         [HttpGet("{id}")]

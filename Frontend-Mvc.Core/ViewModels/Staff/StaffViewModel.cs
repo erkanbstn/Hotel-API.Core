@@ -1,4 +1,4 @@
-﻿namespace Frontend_Mvc.Core.Models.Staff
+﻿namespace Frontend_Mvc.Core.ViewModels.Staff
 {
     public class StaffViewModel
     {

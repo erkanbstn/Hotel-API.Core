@@ -1,5 +1,7 @@
 ﻿using ApiConsume.BusinessLayer.Abstract;
+using ApiConsume.DtoLayer.Dtos.ServiceDto;
 using ApiConsume.EntityLayer.Concrete;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +12,12 @@ namespace Hotel_Api.Core.Controller
     public class ServiceController : ControllerBase
     {
         private readonly IServiceService _ServiceService;
+        private readonly IMapper _mapper;
 
-        public ServiceController(IServiceService ServiceService)
+        public ServiceController(IServiceService serviceService, IMapper mapper)
         {
-            _ServiceService = ServiceService;
+            _ServiceService = serviceService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -23,9 +27,10 @@ namespace Hotel_Api.Core.Controller
             return Ok(values);
         }
         [HttpPost]
-        public IActionResult AddService(Service Service)
+        public IActionResult AddService(ServiceAddDto serviceAddDto)
         {
-            _ServiceService.TInsert(Service);
+            var values = _mapper.Map<Service>(serviceAddDto);
+            _ServiceService.TInsert(values);
             return Ok();
         }
         [HttpDelete]
@@ -35,9 +40,10 @@ namespace Hotel_Api.Core.Controller
             return Ok();
         }
         [HttpPut]
-        public IActionResult UpdateService(Service Service)
+        public IActionResult UpdateService(ServiceUpdateDto serviceUpdateDto)
         {
-            _ServiceService.TUpdate(Service);
+            var values = _mapper.Map<Service>(serviceUpdateDto);
+            _ServiceService.TUpdate(values);
             return Ok();
         }
         [HttpGet("{id}")]

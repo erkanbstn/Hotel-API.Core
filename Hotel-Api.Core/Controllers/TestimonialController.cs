@@ -1,5 +1,7 @@
 ﻿using ApiConsume.BusinessLayer.Abstract;
+using ApiConsume.DtoLayer.Dtos.TestimonialDto;
 using ApiConsume.EntityLayer.Concrete;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +12,12 @@ namespace Hotel_Api.Core.Controller
     public class TestimonialController : ControllerBase
     {
         private readonly ITestimonialService _TestimonialService;
+        private readonly IMapper _mapper;
 
-        public TestimonialController(ITestimonialService TestimonialService)
+        public TestimonialController(ITestimonialService testimonialService, IMapper mapper)
         {
-            _TestimonialService = TestimonialService;
+            _TestimonialService = testimonialService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -23,9 +27,10 @@ namespace Hotel_Api.Core.Controller
             return Ok(values);
         }
         [HttpPost]
-        public IActionResult AddTestimonial(Testimonial Testimonial)
+        public IActionResult AddTestimonial(TestimonialAddDto testimonialAddDto)
         {
-            _TestimonialService.TInsert(Testimonial);
+            var values = _mapper.Map<Testimonial>(testimonialAddDto);
+            _TestimonialService.TInsert(values);
             return Ok();
         }
         [HttpDelete]
@@ -35,9 +40,10 @@ namespace Hotel_Api.Core.Controller
             return Ok();
         }
         [HttpPut]
-        public IActionResult UpdateTestimonial(Testimonial Testimonial)
+        public IActionResult UpdateTestimonial(TestimonialUpdateDto testimonialUpdateDto)
         {
-            _TestimonialService.TUpdate(Testimonial);
+            var values = _mapper.Map<Testimonial>(testimonialUpdateDto);
+            _TestimonialService.TUpdate(values);
             return Ok();
         }
         [HttpGet("{id}")]
