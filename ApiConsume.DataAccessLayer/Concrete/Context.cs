@@ -12,13 +12,6 @@ namespace ApiConsume.DataAccessLayer.Concrete
 {
     public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
-        private readonly IConfiguration _configuration;
-
-        public Context(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=GEOPC\\SQLEXPRESS;Initial Catalog=ApiDb;Integrated Security=True");
@@ -28,5 +21,6 @@ namespace ApiConsume.DataAccessLayer.Concrete
         public DbSet<Staff> Staffes { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Booking> Bookings{ get; set; }
     }
 }

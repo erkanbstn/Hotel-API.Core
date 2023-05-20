@@ -1,10 +1,11 @@
-﻿
+﻿@model Frontend_Mvc.Core.ViewModels.Count.CountInt
+
 <div class="row g-3 pb-4">
     <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">
         <div class="border rounded p-1">
             <div class="border rounded text-center p-4">
                 <i class="fa fa-hotel fa-2x text-primary mb-2"></i>
-                <h2 class="mb-1" data-toggle="counter-up">1234</h2>
+                <h2 class="mb-1" data-toggle="counter-up">@Model.RoomCount</h2>
                 <p class="mb-0">Odalarımız</p>
             </div>
         </div>
@@ -13,7 +14,7 @@
         <div class="border rounded p-1">
             <div class="border rounded text-center p-4">
                 <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>
-                <h2 class="mb-1" data-toggle="counter-up">1234</h2>
+                <h2 class="mb-1" data-toggle="counter-up">@Model.StaffCount</h2>
                 <p class="mb-0">Çalışanlarımız</p>
             </div>
         </div>
@@ -22,7 +23,7 @@
         <div class="border rounded p-1">
             <div class="border rounded text-center p-4">
                 <i class="fa fa-users fa-2x text-primary mb-2"></i>
-                <h2 class="mb-1" data-toggle="counter-up">1234</h2>
+                <h2 class="mb-1" data-toggle="counter-up">@Model.ReferenceCount</h2>
                 <p class="mb-0">Referanslarımız</p>
             </div>
         </div>

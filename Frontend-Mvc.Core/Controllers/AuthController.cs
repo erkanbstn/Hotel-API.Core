@@ -23,10 +23,10 @@ namespace Frontend_Mvc.Core.Controllers
         [HttpPost]
         public async Task<IActionResult> LogIn(LoginViewModel loginViewModel)
         {
-            var result = await _signInManager.PasswordSignInAsync(loginViewModel.UserName,loginViewModel.Password,false,false);
+            var result = await _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, false, false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index","Staff");
+                return RedirectToAction("Index", "Staff");
             }
             return View();
         }
@@ -50,8 +50,9 @@ namespace Frontend_Mvc.Core.Controllers
             }
             return View();
         }
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogOut()
         {
+            await _signInManager.SignOutAsync();
             return View();
         }
     }

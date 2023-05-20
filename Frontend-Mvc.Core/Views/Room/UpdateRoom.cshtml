@@ -1,0 +1,31 @@
+﻿@model RoomViewModel
+
+@{
+    ViewData["Title"] = "UpdateRoom";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Oda Düzenle</h1>
+<br />
+<form method="post">
+    <input asp-for="Id" class="form-control" type="hidden" />
+    <span>Oda</span>
+    <input asp-for="Title" class="form-control" type="text" />
+    <br />
+    <span>Fiyat</span>
+    <input asp-for="Price" class="form-control" type="text" />
+    <br />
+    <span>Yatak Sayısı</span>
+    <input asp-for="BedCount" class="form-control" type="text" />
+    <br />
+    <span>Banyo Sayısı</span>
+    <input asp-for="BathCount" class="form-control" type="text" />
+    <br />
+    <span>Wifi</span>
+    <input asp-for="Wifi" class="form-control" type="text" />
+    <br />
+    <span>Görsel</span>
+    <input asp-for="RoomCoverImage" class="form-control" type="text" />
+    <br />
+    <input class="btn btn-primary" value="Değişiklikleri Kaydet" type="submit" />
+</form>

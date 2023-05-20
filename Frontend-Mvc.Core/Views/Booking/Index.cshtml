@@ -1,0 +1,73 @@
+﻿@model List<BookingViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Rezervasyon Listesi</h1>
+<br />
+<table class="table table-hover">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Kişi
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Giriş
+        </th>
+        <th>
+            Çıkış
+        </th>
+        <th>
+            Yetişkin
+        </th>
+        <th>
+            Çocuk
+        </th>
+        <th>
+            Oda
+        </th>
+        <th colspan="2">
+            Aksiyon
+        </th>
+    </tr>
+    @foreach (var booking in Model)
+    {
+        <tr>
+            <td>
+                @booking.Id
+            </td>
+            <td>
+                @booking.Name
+            </td>
+            <td>
+                @booking.Email
+            </td>
+            <td>
+                @Convert.ToDateTime(booking.CheckIn).ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @Convert.ToDateTime(booking.CheckOut).ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @booking.AdultCount
+            </td>
+            <td>
+                @booking.ChildCount
+            </td>
+            <td>
+                @booking.RoomCount
+            </td>
+            <td>
+                <a href="~/Booking/DeleteBooking/@booking.Id" class="btn btn-danger">Sil</a>
+                <a href="~/Booking/UpdateBooking/@booking.Id" class="btn btn-success">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a href="~/Booking/AddBooking" class="btn btn-primary">Yeni Rezervasyon Ekle</a>

@@ -1,0 +1,38 @@
+﻿@model BookingViewModel
+@{
+    ViewData["Title"] = "UpdateBooking";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Rezervasyon Düzenle</h1>
+<br />
+<form method="post">
+    <input asp-for="Id" class="form-control" type="hidden" />
+    <span>Kişi</span>
+    <input asp-for="Name" class="form-control" type="text" />
+    <br />
+    <span>Email</span>
+    <input asp-for="Email" class="form-control" type="text" />
+    <br />
+    <span>Giriş Tarihi</span>
+    <input asp-for="CheckIn" class="form-control" type="date" />
+    <br /> 
+    <span>Çıkış Tarihi</span>
+    <input asp-for="CheckOut" class="form-control" type="date" />
+    <br />
+     <span>Yetişkin Sayısı</span>
+    <input asp-for="AdultCount" class="form-control" type="text" />
+    <br />
+    <span>Çocuk Sayısı</span>
+    <input asp-for="ChildCount" class="form-control" type="text" />
+    <br />
+    <span>Oda Sayısı</span>
+    <input asp-for="RoomCount" class="form-control" type="text" />
+    <br />
+    <span>Özel İstek</span>
+    <input asp-for="SpecialRequest" class="form-control" type="text" />
+    <br />
+    <input class="btn btn-primary" value="Değişiklikleri Kaydet" type="submit" />
+</form>
+
+

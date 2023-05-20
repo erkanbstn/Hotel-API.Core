@@ -1,0 +1,99 @@
+﻿@model List<RoomViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Oda Listesi</h1>
+<br />
+<table class="table table-hover">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Başlık
+        </th>
+        <th>
+        Fiyat
+        </th>
+        <th>
+            Yatak
+        </th>
+         <th>
+            Banyo
+        </th>
+        <th>
+            No
+        </th>
+            <th>
+            Wifi
+        </th>
+                    <th>
+            Görsel
+        </th>
+          
+            <th>
+            Durum
+        </th>
+        <th colspan="2">
+            Aksiyon
+        </th>
+    </tr>
+    @foreach (var Room in Model)
+    {
+        <tr>
+            <td>
+                @Room.Id
+            </td>
+            <td>
+                @Room.Title
+            </td>
+            <td>
+                @Room.Price
+            </td>
+              <td>
+                @Room.BedCount
+            </td>
+              <td>
+                @Room.BathCount
+            </td>
+            <th>
+                @Room.No
+            </th>
+              <td>
+                @if (Room.Wifi)
+                {
+                    <input type="checkbox" checked/>
+                }
+                else
+                {
+                    <input type="checkbox" />
+                }
+            </td>
+            <td>
+                <img src="~/hotel/img/@Room.RoomCoverImage" width="80px" height="80px" />
+            </td>
+           
+              <td>
+                   @if (Room.RoomStatus)
+                {
+                    <input type="checkbox" checked/>
+                }
+                else
+                {
+                    <input type="checkbox" />
+                }
+                
+            </td>
+            <td>
+                <a href="~/Room/DeleteRoom/@Room.Id" class="btn btn-danger">Sil</a>
+                <a href="~/Room/UpdateRoom/@Room.Id" class="btn btn-success">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a href="~/Room/AddRoom" class="btn btn-primary">Yeni Oda Ekle</a>
+
+
