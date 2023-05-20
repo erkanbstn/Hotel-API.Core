@@ -1,8 +1,12 @@
+using ApiConsume.DataAccessLayer.Concrete;
+using ApiConsume.EntityLayer.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+builder.Services.AddDbContext<Context>().AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +26,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Staff}/{action=Index}/{id?}");
+    pattern: "{controller=Auth}/{action=Register}/{id?}");
 
 app.Run();

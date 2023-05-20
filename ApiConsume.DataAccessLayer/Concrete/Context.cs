@@ -21,7 +21,7 @@ namespace ApiConsume.DataAccessLayer.Concrete
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("Sql"));
+            optionsBuilder.UseSqlServer("Server=GEOPC\\SQLEXPRESS;Initial Catalog=ApiDb;Integrated Security=True");
         }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<Room> Rooms { get; set; }

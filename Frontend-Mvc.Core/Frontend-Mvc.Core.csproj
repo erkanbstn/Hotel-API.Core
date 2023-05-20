@@ -27,4 +27,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ApiConsume.DataAccessLayer\ApiConsume.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\ApiConsume.EntityLayer\ApiConsume.EntityLayer.csproj" />
+  </ItemGroup>
+
 </Project>
