@@ -1,12 +1,17 @@
 using ApiConsume.DataAccessLayer.Concrete;
 using ApiConsume.EntityLayer.Concrete;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Frontend_Mvc.Core.ValidationRules;
+using Frontend_Mvc.Core.ViewModels.Room;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation();
+builder.Services.AddTransient<IValidator<RoomViewModel>, RoomValidationRules>();
 builder.Services.AddHttpClient();
 builder.Services.AddDbContext<Context>().AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 builder.Services.AddMvc(opt =>
@@ -17,7 +22,7 @@ builder.Services.AddMvc(opt =>
 builder.Services.ConfigureApplicationCookie(opt =>
 {
     opt.Cookie.HttpOnly = true;
-    opt.ExpireTimeSpan= TimeSpan.FromMinutes(10);
+    opt.ExpireTimeSpan = TimeSpan.FromMinutes(10);
     opt.LoginPath = "/Auth/Login/";
 });
 var app = builder.Build();
@@ -30,7 +35,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseStatusCodePagesWithReExecute("/Main/Error404","?code={0}");
+app.UseStatusCodePagesWithReExecute("/Main/Error404", "?code={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAuthentication();

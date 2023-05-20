@@ -33,13 +33,16 @@ namespace Frontend_Mvc.Core.Controllers
         [HttpPost]
         public async Task<IActionResult> AddRoom(RoomViewModel RoomViewModel)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(RoomViewModel);
-            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("http://localhost:5298/api/Room", content);
-            if (responseMessage.IsSuccessStatusCode)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                var client = _httpClientFactory.CreateClient();
+                var jsonData = JsonConvert.SerializeObject(RoomViewModel);
+                StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var responseMessage = await client.PostAsync("http://localhost:5298/api/Room", content);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
             return View();
         }

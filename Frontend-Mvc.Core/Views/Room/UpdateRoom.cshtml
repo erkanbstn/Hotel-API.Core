@@ -9,17 +9,24 @@
 <br />
 <form method="post">
     <input asp-for="Id" class="form-control" type="hidden" />
+    <span>No</span>
+    <input asp-for="No" class="form-control" type="text" />
+    <span asp-validation-for="No" class="text-danger"></span>
+    <br />
     <span>Oda</span>
     <input asp-for="Title" class="form-control" type="text" />
+    <span asp-validation-for="Title" class="text-danger"></span>
     <br />
     <span>Fiyat</span>
     <input asp-for="Price" class="form-control" type="text" />
     <br />
     <span>Yatak Sayısı</span>
     <input asp-for="BedCount" class="form-control" type="text" />
+    <span asp-validation-for="No" class="text-danger"></span>
     <br />
     <span>Banyo Sayısı</span>
     <input asp-for="BathCount" class="form-control" type="text" />
+    <span asp-validation-for="No" class="text-danger"></span>
     <br />
     <span>Wifi</span>
     <input asp-for="Wifi" class="form-control" type="text" />
