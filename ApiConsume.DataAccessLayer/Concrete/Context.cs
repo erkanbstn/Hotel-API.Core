@@ -12,9 +12,9 @@ namespace ApiConsume.DataAccessLayer.Concrete
 {
     public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public Context(DbContextOptions<Context> dbContextOptions) : base(dbContextOptions)
         {
-            optionsBuilder.UseSqlServer("Server=GEOPC\\SQLEXPRESS;Initial Catalog=ApiDb;Integrated Security=True");
+            
         }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<Room> Rooms { get; set; }
